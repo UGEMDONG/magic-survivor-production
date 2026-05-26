@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "NewPlayerClassData", menuName = "ScriptableObjects/Player Class Data")]
-public class PlayerClassData : MonoBehaviour
+public class PlayerClassData : ScriptableObject
 {
     [SerializeField] private string className;
     [SerializeField] private float maxHp;

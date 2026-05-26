@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "NewGameModeData", menuName = "ScriptableObjects/Game Mode Data")]
-public class GameModeData : MonoBehaviour
+public class GameModeData : ScriptableObject
 {
     [SerializeField] private string modeName;
     [SerializeField] private bool bossSpawn;
