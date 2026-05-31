@@ -22,6 +22,18 @@ public class Flame : Weapon
         }
     }
 
+    // 무기의 virtual로 만든 레벨 업 메서드 활용하기!
+    protected override void OnLv2()
+    {
+        base.OnLv2();
+        fireSpawnCount += 2;
+    }
+    protected override void OnLv3()
+    {
+        base.OnLv3();
+        fireSpawnCount += 3;
+    }
+
     protected override bool TryAttack()
     {
         StartCoroutine(Coroutine_Flame());

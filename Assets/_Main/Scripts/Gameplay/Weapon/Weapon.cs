@@ -3,13 +3,15 @@ using UnityEngine;
 // 이전에서 이름 조금 바꾸고, 메서드 몇 가지 수정함.
 public abstract class Weapon : MonoBehaviour, IWeapon
 {
-    [SerializeField] protected WeaponData baseData;
+    [SerializeField] protected /*readonly*/ WeaponData baseData;
+    protected WeaponState state;
     protected IWeaponOwner owner;
 
     protected float coolTimer;
-    protected int level;
+    protected int level = 1;
 
-    public WeaponData Data => baseData;
+    public WeaponData BaseData => baseData;
+    public WeaponState State => state;
 
     protected abstract bool TryAttack();
 
@@ -17,10 +19,10 @@ public abstract class Weapon : MonoBehaviour, IWeapon
     protected virtual Vector2 GetFixedDir() => Vector2.up;
     protected virtual Vector2 GetTargetDir() => Vector2.zero;
 
-    // 저번에 계륵이었던 함수에서 지금은 바꿀 일이 거의 없어진 방식 ((Owner가 있기에 MoveDir을 쉽게 가져올 수 있음.
+    // 프로토타입에산 계륵이었던 함수에서 지금은 바꿀 일이 거의 없어진 방식 ((Owner가 있기에 MoveDir을 쉽게 가져올 수 있음.
     protected virtual Vector2 GetAttackDir()
     {
-        switch(baseData.directionType)
+        switch (State.DirectionType)
         {
             case WeaponDirectionType.None:
                 return Vector2.zero;
@@ -37,6 +39,8 @@ public abstract class Weapon : MonoBehaviour, IWeapon
     // 아까 오너가 Transform을 반환하기 때문에 인자값이 클래스가 아니여도 자식으로 쉽게 들어갈 수 있음.
     public virtual void Initialize(IWeaponOwner owner)
     {
+        state = new WeaponState(BaseData);
+
         this.owner = owner;
         transform.SetParent(owner.transform);
         transform.localPosition = Vector3.zero;
@@ -44,17 +48,31 @@ public abstract class Weapon : MonoBehaviour, IWeapon
     // 쿨타임 방식 개선
     public virtual void Tick(float deltaTime)
     {
-        if(coolTimer < baseData.coolTime)
+        if (coolTimer < State.CoolTime)
             coolTimer += deltaTime;
-            
-        if (coolTimer >= baseData.coolTime)
+
+        if (coolTimer >= State.CoolTime)
         {
             if (!TryAttack()) return;
             coolTimer = 0f;
         }
     }
-    public void Upgrade()
+
+    // 먼가 딱봐도 겁나 비효율적인 것 같긴 한데, 우리 게임 일단 3레벨이 Max로 정했으니 이렇게 한겨
+    protected virtual void OnLv2() { State.AddDamage(State.Damage); }// 뎀지 2배!
+    protected virtual void OnLv3() { State.ReduceCoolTime(State.CoolTime / 2f); }// 쿨타임 2배 단축!!
+    public virtual void Upgrade()
     {
+        if (level >= 3)
+        {
+            Debug.Log("무기 " + BaseData.WeaponName + " 이 이미 최대레벨입니다!");
+            return;
+        }
         level++;
-    }
+        switch (level)
+        {
+            case 2: OnLv2(); break;
+            case 3: OnLv3(); break;
+        }
+    }    
 }

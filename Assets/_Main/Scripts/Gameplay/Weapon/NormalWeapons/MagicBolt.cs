@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// 저번 Bow와 비슷한 타겟 방향 공격 예제인데, 이번엔 원작의 "마력탄(Magic Bolt)"를 참고해서 유도 투사체 공격으로 만들었다.
+// 프로토타입의 Bow와 비슷한 타겟 방향 공격 예제인데, 이번엔 원작의 "마력탄(Magic Bolt)"를 참고해서 유도 투사체 공격으로 만들었다.
 
 public class MagicBolt : Weapon
 {
@@ -31,7 +31,7 @@ public class MagicBolt : Weapon
     public override void Tick(float deltaTime)
     {
         // 찾는게 먼저, 그리고 공격
-        target = Utility.GetNearestTarget2D(transform.position, baseData.attackRadius, baseData.targetLayers);      
+        target = Utility.GetNearestTarget2D(transform.position, State.DetectRadius, State.TargetLayers);      
         base.Tick(deltaTime);
     }
 }

@@ -19,5 +19,5 @@ MonoBehaviour:
     m_Bits: 64
   coolTime: 4
   damage: 15
-  attackRadius: 10
-  attackRange: 2
+  detectRadius: 10
+  effectRadius: 2
