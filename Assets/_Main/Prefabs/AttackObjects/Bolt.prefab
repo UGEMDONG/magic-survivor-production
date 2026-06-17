@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9085008717350638637}
   - component: {fileID: 7866039242399317351}
-  - component: {fileID: 2861984912969595523}
   - component: {fileID: -738514141975764522}
   - component: {fileID: -4132220976324414325}
+  - component: {fileID: 3490729559697066736}
+  - component: {fileID: -7991481637371974895}
   m_Layer: 0
   m_Name: Bolt
   m_TagString: Untagged
@@ -94,24 +95,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &2861984912969595523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5461926401587467010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eecc840cfa4dac348abb1b606cba7bee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Bolt
-  damage: 0
-  direction: {x: 0, y: 0, z: 0}
-  speed: 5
-  attackCollider: {fileID: -738514141975764522}
-  lifeTime: 5
-  destroyOnAttack: 1
 --- !u!58 &-738514141975764522
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -175,3 +158,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &3490729559697066736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5461926401587467010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ea1476b8b59bb4db464384193e33e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Projectile
+  attackCollider: {fileID: -738514141975764522}
+  lifeTime: 1
+  destroyOnAttack: 1
+--- !u!114 &-7991481637371974895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5461926401587467010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01232efc4de03bc44938e867bbef3790, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HomingMovement
+  projectile: {fileID: 3490729559697066736}

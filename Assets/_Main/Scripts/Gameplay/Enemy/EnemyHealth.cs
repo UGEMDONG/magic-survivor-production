@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour, IDamageable
+public class EnemyHealth : MonoBehaviour, IDamageable, ITargetable
 {
     [SerializeField] float hpMax = 100;
     [SerializeField] float hp;
@@ -11,6 +11,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     public float HP => hp;
 
     public bool IsDie => isDie;
+
+    public bool IsTargetable => true;
 
     public void TakeDamage(float damage)
     {

@@ -8,21 +8,21 @@ public static class Utility
     public static Vector3 GetNormalizedDir(Vector3 to, Vector3 from)
         => (to - from).normalized;
 
-    public static List<IDamageable> GetNearTargets(Vector2 position, float attackRadius, LayerMask targetLayers)
+    public static List<ITargetable> GetNearTargets(Vector2 position, float attackRadius, LayerMask targetLayers)
     {
         // 가상의 원 물리 판정으로 콜라이더들 가져오기
         var cols = Physics2D.OverlapCircleAll(position, attackRadius, targetLayers);
         if (cols == null || cols.Length == 0) return null;
         // 콜라이더마다 IDamageable이 붙어있으면 저장
-        List<IDamageable> targets = new();
+        List<ITargetable> targets = new();
         foreach (var col in cols)
-            if (col.TryGetComponent<IDamageable>(out IDamageable target))
+            if (col.TryGetComponent<ITargetable>(out ITargetable target))
                 targets.Add(target);
         // 하나도 없으면 null 리턴
         if (targets.Count == 0) return null;
         return targets;
     }
-    public static IDamageable GetNearestTarget2D(Vector2 position, float attackRadius, LayerMask targetLayers)
+    public static ITargetable GetNearestTarget2D(Vector2 position, float attackRadius, LayerMask targetLayers)
     {
         var targets = GetNearTargets(position, attackRadius, targetLayers);
         if (targets == null || targets.Count == 0) return null;

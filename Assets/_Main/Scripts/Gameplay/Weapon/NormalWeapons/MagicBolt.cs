@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MagicBolt : Weapon
 {
-    IDamageable target;
-    [SerializeField] Bolt boltPrefab;
+    ITargetable target;
+    [SerializeField] Projectile boltPrefab;
 
     protected override Vector2 GetTargetDir()
     {
@@ -16,14 +16,15 @@ public class MagicBolt : Weapon
 
     protected override bool TryAttack()
     {
-        // 위 아래 방식 두개 다 좋은데 GetTargetDir예시로 쓰기 위해서 전자로 ㄱㄱ
-        if (GetAttackDir() == Vector2.zero)
-            return false;
-        // if (target == null) return false; 
+        // 위 아래 방식 두개 다 좋은데 GetTargetDir예시로 쓰기 위함
+        /*if (GetAttackDir() == Vector2.zero)
+            return false;*/
+        if (target == null) return false; 
 
-        Bolt bolt = Instantiate(boltPrefab);
+        Projectile bolt = Instantiate(boltPrefab);
         bolt.transform.position = transform.position;
-        bolt.Initialize(this, target);
+        bolt.Initialize(this, 5f, target);
+        // Debug.Log(bolt, bolt.gameObject);
 
         return true;
     }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8500082402293486964
+--- !u!1 &3024242775711299804
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3609965187891921032}
-  - component: {fileID: 341492926318437591}
+  - component: {fileID: 6261139469994464518}
+  - component: {fileID: 2668195916675587240}
   m_Layer: 0
-  m_Name: MagicBolt
+  m_Name: LavaZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3609965187891921032
+--- !u!4 &6261139469994464518
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8500082402293486964}
+  m_GameObject: {fileID: 3024242775711299804}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,17 +32,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &341492926318437591
+--- !u!114 &2668195916675587240
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8500082402293486964}
+  m_GameObject: {fileID: 3024242775711299804}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7edbab12385d194aa5c792f2d8204c2, type: 3}
+  m_Script: {fileID: 11500000, guid: ac225a1d15cc41c46b9e0da32ccbaadd, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MagicBolt
-  baseData: {fileID: 11400000, guid: ed2488fa9ad5b3d41b149737653ed6b0, type: 2}
-  boltPrefab: {fileID: 2861984912969595523, guid: 6ab581b2c6fbcac4c87ed720f5123249, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::LavaZone
+  baseData: {fileID: 11400000, guid: a1a8631f6e0bdc2459c37baf4588a671, type: 2}
+  lavaPrefab: {fileID: 8189427250243878300, guid: 7b2c84d55d8def642ad75c9c9e4f18e7, type: 3}
