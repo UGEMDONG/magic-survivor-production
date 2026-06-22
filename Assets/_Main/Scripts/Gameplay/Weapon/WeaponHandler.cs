@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// 저번에 WeaponHolder를 추상으로 만들어서 무기를 쓰는 모든 게임 오브젝트들이 사용하기 위해 확장성이 좋게 만들자는 의견이 나와서
+// 프로토타입의 WeaponHolder를 추상으로 만들어서 무기를 쓰는 모든 게임 오브젝트들이 사용하기 위해 확장성이 좋게 만들자는 의견이 나와서
 // 개인적으로 컴포넌트화 해서 사용하는 추상 클래스 만들었음. 이름 바꾼 이유: 무기를 받는 것 보단 사용하는 것에 중점.
 public abstract class WeaponHandler : MonoBehaviour, IWeaponReceiver
 {

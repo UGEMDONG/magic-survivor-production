@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Fire : AttackObject
 {
+    Vector3 direction;
     // [SerializeField] Animation animation;
 
     public void AnimEvent_OnBurn()

@@ -11,13 +11,24 @@ public enum WeaponDirectionType
 [CreateAssetMenu(fileName = "WeaponData", menuName = "Scriptable Objects/WeaponData")]
 public class WeaponData : ScriptableObject
 {
-    public string weaponName;
-    public WeaponDirectionType directionType;
-    public LayerMask targetLayers;  // 물리적으로 감지 가능한 레이어 집합
+    // 이 값들을 모두 private으로 만든 이유:
+    // 우선 WeaponData를 무기들이 모두 getter로 반환할 건데, 그러면 자연스레 ~.damage 같이 접근하고 설정 가능하다.
+    // 그럼 WeaponData를 반환하는 쪽에서 readonly로 쓰면 안되냐? 애초에 프로퍼티는 변수가 아닌 메서드에 가까워서 readonly를 못붙힌다..
+    [SerializeField] private string weaponName;
+    [SerializeField] private WeaponDirectionType directionType;
+    [SerializeField] private LayerMask targetLayers;
     [Space]
-    public float coolTime;
-    [Space]
-    public float damage;
-    public float attackRadius;      // 공격 범위(탐지 범위)
-    public float attackRange;       // 공격 효과 넓이(마법 장판 반지름 등)
+    [SerializeField] private float coolTime;
+    [SerializeField] private float damage;
+    [SerializeField] private float detectRadius;
+    [SerializeField] private float effectRadius;
+
+    public string WeaponName => weaponName;
+    public WeaponDirectionType DirectionType => directionType;
+    public LayerMask TargetLayers => targetLayers;
+
+    public float CoolTime => coolTime;
+    public float Damage => damage;
+    public float DetectRadius => detectRadius;
+    public float EffectRadius => effectRadius;
 }
