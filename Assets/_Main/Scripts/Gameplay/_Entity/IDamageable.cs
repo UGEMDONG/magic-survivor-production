@@ -3,7 +3,7 @@ using UnityEngine;
 public interface IDamageable
 {
     public Transform transform { get; }
-    // ¿ø·¡ °ÔÀÓ¿ÀºêÁ§Æ®±îÁø ÇÊ¿ä ¾ø¾ú´Âµ¥ activeSelf Ã¼Å©¶§¹®¿¡ ÀÌÁ¨ ÇÊ¿äÇØÁ®¹ö¸®³×;
+    // ì›ë˜ ê²Œì„ì˜¤ë¸Œì íŠ¸ê¹Œì§„ í•„ìš” ì—†ì—ˆëŠ”ë° activeSelf ì²´í¬ë•Œë¬¸ì— ì´ì   í•„ìš”í•´ì ¸ë²„ë¦¬ë„¤;
     public GameObject gameObject { get; }
     public float HP { get; }
     public bool IsDie { get; }

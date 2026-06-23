@@ -1,8 +1,8 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.InputSystem;
 
-// ÇÃ·¹ÀÌ¾î ±â´É ±¸ÇöÀÌ ³» ´ã´çÀº ¾Æ´ÏÁö¸¸ Å×½ºÆ® °â, ´©±º°¡ Á¦½ÃÇÑ ÄÄÆ÷³ÍÆ® ±¸Á¶È­¸¦ °í·ÁÇØ¼­ Â§ ½ºÅ©¸³Æ®
-// °ø°İ ¹æÇâÀ» PlayerMoveÄÄÆ÷³ÍÆ®¸¦ ÅëÇØ °¡Á®¿À´Âµ¥ ±×°Ô ¿ø·¡ ¾ø°Å³ª °©ÀÚ±â ¾ø¾îÁ®µµ ¿¡·¯´Â ¾È³­´Ù(´Ü¼øÈ÷ ¤´°°ÀÌ ÀÛµ¿ÇÒ »Ó..)
+// í”Œë ˆì´ì–´ ê¸°ëŠ¥ êµ¬í˜„ì´ ë‚´ ë‹´ë‹¹ì€ ì•„ë‹ˆì§€ë§Œ í…ŒìŠ¤íŠ¸ ê²¸, ëˆ„êµ°ê°€ ì œì‹œí•œ ì»´í¬ë„ŒíŠ¸ êµ¬ì¡°í™”ë¥¼ ê³ ë ¤í•´ì„œ ì§  ìŠ¤í¬ë¦½íŠ¸
+// ê³µê²© ë°©í–¥ì„ PlayerMoveì»´í¬ë„ŒíŠ¸ë¥¼ í†µí•´ ê°€ì ¸ì˜¤ëŠ”ë° ê·¸ê²Œ ì›ë˜ ì—†ê±°ë‚˜ ê°‘ìê¸° ì—†ì–´ì ¸ë„ ì—ëŸ¬ëŠ” ì•ˆë‚œë‹¤(ë‹¨ìˆœíˆ ã…„ê°™ì´ ì‘ë™í•  ë¿..)
 public class PlayerWeapon : WeaponHandler, IWeaponOwner
 {
     SimplePlayerMove mover;
@@ -18,12 +18,12 @@ public class PlayerWeapon : WeaponHandler, IWeaponOwner
 
     public Vector3 MoveDirection => !Mover ? Vector3.zero : mover.LastMoveDir;
 
-    // ÀÌ°Å ¾î¶»°Ô È£ÃâÇÏ´ÂÁö Àß ¸ğ¸£°Ú´Ù¸é -> TestPlayerÀÇ PlayerInput ÄÄÆ÷³ÍÆ® PlayerÄİ¹é µî·Ï ÂÊ¿¡ ¿¬°áµÇ¾îÀÖ¾î
+    // ì´ê±° ì–´ë–»ê²Œ í˜¸ì¶œí•˜ëŠ”ì§€ ì˜ ëª¨ë¥´ê² ë‹¤ë©´ -> TestPlayerì˜ PlayerInput ì»´í¬ë„ŒíŠ¸ Playerì½œë°± ë“±ë¡ ìª½ì— ì—°ê²°ë˜ì–´ìˆì–´
     public void UpgradeWeapons_Test(InputAction.CallbackContext context)
     {
         if (!context.started) return;
 
-        Debug.Log("ÀüÃ¼ ¹«±â °­È­!");
+        Debug.Log("ì „ì²´ ë¬´ê¸° ê°•í™”!");
         foreach (IWeapon weapon in GetWeaponList)
             weapon.Upgrade();
     }

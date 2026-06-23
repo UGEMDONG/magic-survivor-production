@@ -12,7 +12,7 @@ public class Lightning : Weapon
         fx.position = position;
         fx.gameObject.SetActive(true);
 
-        // °öÇÏ±â 2 ÇØÁÖ´Â ÀÌÀ¯: À¯´ÏÆ¼ ±âº» ¿øÀº ½ºÄÉÀÏ 1ÀÏ ¶§ ¹İÁö¸§ 0.5, ±×·¡¼­ ¿ì¸® ÇÇÇØ°¡ ¹İÁö¸§ 2ÀÌ¸é ½ºÄÉÀÏ(Áö¸§)À» 4·Î ¼³Á¤ÇØÁÖÀÚ
+        // ê³±í•˜ê¸° 2 í•´ì£¼ëŠ” ì´ìœ : ìœ ë‹ˆí‹° ê¸°ë³¸ ì›ì€ ìŠ¤ì¼€ì¼ 1ì¼ ë•Œ ë°˜ì§€ë¦„ 0.5, ê·¸ë˜ì„œ ìš°ë¦¬ í”¼í•´ê°€ ë°˜ì§€ë¦„ 2ì´ë©´ ìŠ¤ì¼€ì¼(ì§€ë¦„)ì„ 4ë¡œ ì„¤ì •í•´ì£¼ì
         fx.localScale = State.EffectRadius * Vector3.one * 2f;
 
         yield return new WaitForSeconds(0.5f);
@@ -32,11 +32,11 @@ public class Lightning : Weapon
 
     protected override bool TryAttack()
     {
-        // °ø°İ ¹üÀ§¿¡ ÀÖ´Â Àûµé ÇÏ³ª °¡Á®¿À±â
+        // ê³µê²© ë²”ìœ„ì— ìˆëŠ” ì ë“¤ í•˜ë‚˜ ê°€ì ¸ì˜¤ê¸°
         var targetsInAttackRadius = Utility.GetNearTargets(transform.position, State.DetectRadius, owner.TargetLayerMask);
         if (targetsInAttackRadius == null || targetsInAttackRadius.Count == 0) return false;
 
-        // ±× Àûµé Áß ¾Æ¹«³ª ÇÏ³ªÀÇ À§Ä¡ »Ì¾Æ¼­ ±âÁØÀ¸·Î °ø°İ ³ĞÀÌ¿¡ Æ÷ÇÔµÇ´Â Àûµé °¡Á®¿À±â
+        // ê·¸ ì ë“¤ ì¤‘ ì•„ë¬´ë‚˜ í•˜ë‚˜ì˜ ìœ„ì¹˜ ë½‘ì•„ì„œ ê¸°ì¤€ìœ¼ë¡œ ê³µê²© ë„“ì´ì— í¬í•¨ë˜ëŠ” ì ë“¤ ê°€ì ¸ì˜¤ê¸°
         Vector2 randomPos = targetsInAttackRadius[Random.Range(0, targetsInAttackRadius.Count)].transform.position;
         var targetsInAttackArea = Utility.GetNearTargets(randomPos, State.DetectRadius, owner.TargetLayerMask);
 

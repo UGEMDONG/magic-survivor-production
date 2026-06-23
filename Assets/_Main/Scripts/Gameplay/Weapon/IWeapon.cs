@@ -5,10 +5,10 @@ public interface IWeapon
     public WeaponData BaseData { get; }
     public WeaponState State { get; }
 
-    // ¿ø·¡´Â Data.weaponName(baseData)À» ¹ÝÈ¯Çß´Âµ¥, ÀÌÁ¦´Â runtimeData°¡ »ý±â¸é¼­ ¹«±â°¡ ¾Ë¾Æ¼­ ¹ÝÈ¯ÇÏµµ·Ï ÇÏ±â.
+    // ì›ëž˜ëŠ” Data.weaponName(baseData)ì„ ë°˜í™˜í–ˆëŠ”ë°, ì´ì œëŠ” runtimeDataê°€ ìƒê¸°ë©´ì„œ ë¬´ê¸°ê°€ ì•Œì•„ì„œ ë°˜í™˜í•˜ë„ë¡ í•˜ê¸°.
     public string WeaponName => BaseData.WeaponName;
 
-    // ÇÁ·ÎÅäÅ¸ÀÔÀÌ¶û ´Þ¶óÁø Á¡: ÀÌ°Å ÇÏ³ª, ¹«±â¸¦ °ü¸®ÇÏ´Â Å¬·¡½º°¡ ¾Æ´Ñ ÁÖÀÎ¿¡ ´ëÇÑ ÀÎÅÍÆäÀÌ½º¸¦ ¿À³Ê·Î ¸ð½ÃÀÚ!
+    // í”„ë¡œí† íƒ€ìž…ì´ëž‘ ë‹¬ë¼ì§„ ì : ì´ê±° í•˜ë‚˜, ë¬´ê¸°ë¥¼ ê´€ë¦¬í•˜ëŠ” í´ëž˜ìŠ¤ê°€ ì•„ë‹Œ ì£¼ì¸ì— ëŒ€í•œ ì¸í„°íŽ˜ì´ìŠ¤ë¥¼ ì˜¤ë„ˆë¡œ ëª¨ì‹œìž!
     public void Initialize(IWeaponOwner owner);
     public void Tick(float deltaTime);
     public void Upgrade();

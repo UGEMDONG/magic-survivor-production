@@ -22,7 +22,7 @@ public class Flame : Weapon
         }
     }
 
-    // ¹«±âÀÇ virtual·Î ¸¸µç ·¹º§ ¾÷ ¸Ş¼­µå È°¿ëÇÏ±â!
+    // ë¬´ê¸°ì˜ virtualë¡œ ë§Œë“  ë ˆë²¨ ì—… ë©”ì„œë“œ í™œìš©í•˜ê¸°!
     protected override void OnLv2()
     {
         base.OnLv2();

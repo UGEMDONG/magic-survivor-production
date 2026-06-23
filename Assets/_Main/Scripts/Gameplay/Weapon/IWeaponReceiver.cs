@@ -5,7 +5,7 @@ public interface IWeaponReceiver
 {
     public IReadOnlyList<IWeapon> GetWeaponList { get; }
 
-    // ¾Æ±î ¹«±â°¡ ¿À³Ê¸¦ °®±â ¶§¹®¿¡ ¹«±âµéÀ» ÇÑ¹ø¿¡ ÃÊ±âÈ­½ÃÄÑÁÖ±â À§ÇØ¼­ ¾Ï¹¬ÀûÀ¸·Î °¡Á®¾ß ÇÑ´Ù´Â ¸Ş¼­µå
+    // ì•„ê¹Œ ë¬´ê¸°ê°€ ì˜¤ë„ˆë¥¼ ê°–ê¸° ë•Œë¬¸ì— ë¬´ê¸°ë“¤ì„ í•œë²ˆì— ì´ˆê¸°í™”ì‹œì¼œì£¼ê¸° ìœ„í•´ì„œ ì•”ë¬µì ìœ¼ë¡œ ê°€ì ¸ì•¼ í•œë‹¤ëŠ” ë©”ì„œë“œ
     public void Initialize(IWeaponOwner owner);
     void ReceiveWeapon(IWeapon weapon);
 }

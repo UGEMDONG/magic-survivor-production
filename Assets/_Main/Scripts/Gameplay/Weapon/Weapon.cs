@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// ÀÌÀü¿¡¼­ ÀÌ¸§ Á¶±İ ¹Ù²Ù°í, ¸Ş¼­µå ¸î °¡Áö ¼öÁ¤ÇÔ.
+// ì´ì „ì—ì„œ ì´ë¦„ ì¡°ê¸ˆ ë°”ê¾¸ê³ , ë©”ì„œë“œ ëª‡ ê°€ì§€ ìˆ˜ì •í•¨.
 public abstract class Weapon : MonoBehaviour, IWeapon
 {
     [SerializeField] protected /*readonly*/ WeaponData baseData;
@@ -15,7 +15,7 @@ public abstract class Weapon : MonoBehaviour, IWeapon
 
     protected abstract bool TryAttack();
 
-    // GetFixedDir¶û GetTargetDir´Â abstractµµ ÁÁ´Ù°í »ı°¢ÇÏ´Âµ¥, ¾È ¾µ ¹«±â Å¬·¡½º¿¡¼­ ±¸ÇöºÎ¸¦ ²À ÇØ¾ßÇÏ´Â°Ô ±ÍÂú¾Æ¼­ ´ëÃæÀÌ¶óµµ ³Ö¾îº½.
+    // GetFixedDirë‘ GetTargetDirëŠ” abstractë„ ì¢‹ë‹¤ê³  ìƒê°í•˜ëŠ”ë°, ì•ˆ ì“¸ ë¬´ê¸° í´ë˜ìŠ¤ì—ì„œ êµ¬í˜„ë¶€ë¥¼ ê¼­ í•´ì•¼í•˜ëŠ”ê²Œ ê·€ì°®ì•„ì„œ ëŒ€ì¶©ì´ë¼ë„ ë„£ì–´ë´„.
     protected virtual Vector2 GetFixedDir() => Vector2.up;
     protected virtual Vector2 GetTargetDir() => Vector2.zero;
 
@@ -36,7 +36,7 @@ public abstract class Weapon : MonoBehaviour, IWeapon
         };
     }
 
-    // ¾Æ±î ¿À³Ê°¡ TransformÀ» ¹İÈ¯ÇÏ±â ¶§¹®¿¡ ÀÎÀÚ°ªÀÌ Å¬·¡½º°¡ ¾Æ´Ï¿©µµ ÀÚ½ÄÀ¸·Î ½±°Ô µé¾î°¥ ¼ö ÀÖÀ½.
+    // ì•„ê¹Œ ì˜¤ë„ˆê°€ Transformì„ ë°˜í™˜í•˜ê¸° ë•Œë¬¸ì— ì¸ìê°’ì´ í´ë˜ìŠ¤ê°€ ì•„ë‹ˆì—¬ë„ ìì‹ìœ¼ë¡œ ì‰½ê²Œ ë“¤ì–´ê°ˆ ìˆ˜ ìˆìŒ.
     public virtual void Initialize(IWeaponOwner owner)
     {
         state = new WeaponState(BaseData);
@@ -45,7 +45,7 @@ public abstract class Weapon : MonoBehaviour, IWeapon
         transform.SetParent(owner.transform);
         transform.localPosition = Vector3.zero;
     }
-    // ÄğÅ¸ÀÓ ¹æ½Ä °³¼±
+    // ì¿¨íƒ€ì„ ë°©ì‹ ê°œì„ 
     public virtual void Tick(float deltaTime)
     {
         if (coolTimer < State.CoolTime)
@@ -58,14 +58,14 @@ public abstract class Weapon : MonoBehaviour, IWeapon
         }
     }
 
-    // ¸Õ°¡ µüºÁµµ °Ì³ª ºñÈ¿À²ÀûÀÎ °Í °°±ä ÇÑµ¥, ¿ì¸® °ÔÀÓ ÀÏ´Ü 3·¹º§ÀÌ Max·Î Á¤ÇßÀ¸´Ï ÀÌ·¸°Ô ÇÑ°Ü
-    protected virtual void OnLv2() { State.AddDamage(State.Damage); }// µ©Áö 2¹è!
-    protected virtual void OnLv3() { State.ReduceCoolTime(State.CoolTime / 2f); }// ÄğÅ¸ÀÓ 2¹è ´ÜÃà!!
+    // ë¨¼ê°€ ë”±ë´ë„ ê²ë‚˜ ë¹„íš¨ìœ¨ì ì¸ ê²ƒ ê°™ê¸´ í•œë°, ìš°ë¦¬ ê²Œì„ ì¼ë‹¨ 3ë ˆë²¨ì´ Maxë¡œ ì •í–ˆìœ¼ë‹ˆ ì´ë ‡ê²Œ í•œê²¨
+    protected virtual void OnLv2() { State.AddDamage(State.Damage); }// ë€ì§€ 2ë°°!
+    protected virtual void OnLv3() { State.ReduceCoolTime(State.CoolTime / 2f); }// ì¿¨íƒ€ì„ 2ë°° ë‹¨ì¶•!!
     public virtual void Upgrade()
     {
         if (level >= 3)
         {
-            Debug.Log("¹«±â " + BaseData.WeaponName + " ÀÌ ÀÌ¹Ì ÃÖ´ë·¹º§ÀÔ´Ï´Ù!");
+            Debug.Log("ë¬´ê¸° " + BaseData.WeaponName + " ì´ ì´ë¯¸ ìµœëŒ€ë ˆë²¨ì…ë‹ˆë‹¤!");
             return;
         }
         level++;

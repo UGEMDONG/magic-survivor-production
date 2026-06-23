@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// ÇÁ·ÎÅäÅ¸ÀÔÀÇ Bow¿Í ºñ½ÁÇÑ Å¸°Ù ¹æÇâ °ø°İ ¿¹Á¦ÀÎµ¥, ÀÌ¹ø¿£ ¿øÀÛÀÇ "¸¶·ÂÅº(Magic Bolt)"¸¦ Âü°íÇØ¼­ À¯µµ Åõ»çÃ¼ °ø°İÀ¸·Î ¸¸µé¾ú´Ù.
+// í”„ë¡œí† íƒ€ì…ì˜ Bowì™€ ë¹„ìŠ·í•œ íƒ€ê²Ÿ ë°©í–¥ ê³µê²© ì˜ˆì œì¸ë°, ì´ë²ˆì—” ì›ì‘ì˜ "ë§ˆë ¥íƒ„(Magic Bolt)"ë¥¼ ì°¸ê³ í•´ì„œ ìœ ë„ íˆ¬ì‚¬ì²´ ê³µê²©ìœ¼ë¡œ ë§Œë“¤ì—ˆë‹¤.
 
 public class MagicBolt : Weapon
 {
@@ -10,13 +10,13 @@ public class MagicBolt : Weapon
     protected override Vector2 GetTargetDir()
     {
         if (target != null) return Utility.GetNormalizedDir(target.transform.position
-            , transform.position);  // OwnerÀÇ À§Ä¡°¡ ´õ Ç¥ÇöÀÌ Á¤È®ÇÒ ¼ø ÀÖ´Âµ¥ ¿ï °ÔÀÓ ¸ğµç ¹«±âÀÇ À§Ä¡´Â ·ÎÄÃ ¿øÁ¡ÀÎ°É·Î
+            , transform.position);  // Ownerì˜ ìœ„ì¹˜ê°€ ë” í‘œí˜„ì´ ì •í™•í•  ìˆœ ìˆëŠ”ë° ìš¸ ê²Œì„ ëª¨ë“  ë¬´ê¸°ì˜ ìœ„ì¹˜ëŠ” ë¡œì»¬ ì›ì ì¸ê±¸ë¡œ
         return Vector2.zero;
     }
 
     protected override bool TryAttack()
     {
-        // À§ ¾Æ·¡ ¹æ½Ä µÎ°³ ´Ù ÁÁÀºµ¥ GetTargetDir¿¹½Ã·Î ¾²±â À§ÇÔ
+        // ìœ„ ì•„ë˜ ë°©ì‹ ë‘ê°œ ë‹¤ ì¢‹ì€ë° GetTargetDirì˜ˆì‹œë¡œ ì“°ê¸° ìœ„í•¨
         /*if (GetAttackDir() == Vector2.zero)
             return false;*/
         if (target == null) return false; 
@@ -31,7 +31,7 @@ public class MagicBolt : Weapon
 
     public override void Tick(float deltaTime)
     {
-        // Ã£´Â°Ô ¸ÕÀú, ±×¸®°í °ø°İ
+        // ì°¾ëŠ”ê²Œ ë¨¼ì €, ê·¸ë¦¬ê³  ê³µê²©
         target = Utility.GetNearestTarget2D(transform.position, State.DetectRadius, owner.TargetLayerMask);      
         base.Tick(deltaTime);
     }

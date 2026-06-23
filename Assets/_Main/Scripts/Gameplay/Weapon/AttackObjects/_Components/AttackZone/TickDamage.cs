@@ -16,7 +16,7 @@ public class TickDamage : MonoBehaviour
         if (target == null)
             return false;
 
-        // ÆÄ±«µÈ MonoBehaviourÀÎÁö °Ë»ç
+        // íŒŒê´´ëœ MonoBehaviourì¸ì§€ ê²€ì‚¬
         if (target is Object unityObject && unityObject == null)
             return false;
 
@@ -29,7 +29,7 @@ public class TickDamage : MonoBehaviour
     {
         targetBuffer.Clear();
 
-        // ¿øº» ¸®½ºÆ®ÀÇ ÇöÀç »óÅÂ¸¦ º¹»ç
+        // ì›ë³¸ ë¦¬ìŠ¤íŠ¸ì˜ í˜„ì¬ ìƒíƒœë¥¼ ë³µì‚¬
         foreach (IDamageable target in attackZone.Targets)
             targetBuffer.Add(target);
 

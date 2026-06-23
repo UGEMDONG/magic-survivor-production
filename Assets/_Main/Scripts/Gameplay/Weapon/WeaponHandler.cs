@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// ÇÁ·ÎÅäÅ¸ÀÔÀÇ WeaponHolder¸¦ Ãß»óÀ¸·Î ¸¸µé¾î¼­ ¹«±â¸¦ ¾²´Â ¸ğµç °ÔÀÓ ¿ÀºêÁ§Æ®µéÀÌ »ç¿ëÇÏ±â À§ÇØ È®Àå¼ºÀÌ ÁÁ°Ô ¸¸µéÀÚ´Â ÀÇ°ßÀÌ ³ª¿Í¼­
-// °³ÀÎÀûÀ¸·Î ÄÄÆ÷³ÍÆ®È­ ÇØ¼­ »ç¿ëÇÏ´Â Ãß»ó Å¬·¡½º ¸¸µé¾úÀ½. ÀÌ¸§ ¹Ù²Û ÀÌÀ¯: ¹«±â¸¦ ¹Ş´Â °Í º¸´Ü »ç¿ëÇÏ´Â °Í¿¡ ÁßÁ¡.
+// í”„ë¡œí† íƒ€ì…ì˜ WeaponHolderë¥¼ ì¶”ìƒìœ¼ë¡œ ë§Œë“¤ì–´ì„œ ë¬´ê¸°ë¥¼ ì“°ëŠ” ëª¨ë“  ê²Œì„ ì˜¤ë¸Œì íŠ¸ë“¤ì´ ì‚¬ìš©í•˜ê¸° ìœ„í•´ í™•ì¥ì„±ì´ ì¢‹ê²Œ ë§Œë“¤ìëŠ” ì˜ê²¬ì´ ë‚˜ì™€ì„œ
+// ê°œì¸ì ìœ¼ë¡œ ì»´í¬ë„ŒíŠ¸í™” í•´ì„œ ì‚¬ìš©í•˜ëŠ” ì¶”ìƒ í´ë˜ìŠ¤ ë§Œë“¤ì—ˆìŒ. ì´ë¦„ ë°”ê¾¼ ì´ìœ : ë¬´ê¸°ë¥¼ ë°›ëŠ” ê²ƒ ë³´ë‹¨ ì‚¬ìš©í•˜ëŠ” ê²ƒì— ì¤‘ì .
 public abstract class WeaponHandler : MonoBehaviour, IWeaponReceiver
 {
     IWeaponOwner owner;
@@ -19,7 +19,7 @@ public abstract class WeaponHandler : MonoBehaviour, IWeaponReceiver
         initialized = true;
     }
 
-    // Àú¹ø¿£ ReceiveWeapon¸¦ µüÈ÷ È°¿ë ¾ÈÇß¾ú´Âµ¥ ¸®½ºÆ®¿¡ Ãß°¡ÇÏ´Â ÃÖÁ¾ ¸Ş¼­µå ¿ëµµ°¡ ÁÁÀ»µí
+    // ì €ë²ˆì—” ReceiveWeaponë¥¼ ë”±íˆ í™œìš© ì•ˆí–ˆì—ˆëŠ”ë° ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€í•˜ëŠ” ìµœì¢… ë©”ì„œë“œ ìš©ë„ê°€ ì¢‹ì„ë“¯
     public void ReceiveWeapon(IWeapon weapon)
     {
         weapon.Initialize(owner);
@@ -29,14 +29,14 @@ public abstract class WeaponHandler : MonoBehaviour, IWeaponReceiver
     {
         if(!initialized)
         {
-            Debug.LogWarning("WeaponHandler°¡ ÃÊ±âÈ­µÇÁö ¾Ê¾Ò½À´Ï´Ù!!");
+            Debug.LogWarning("WeaponHandlerê°€ ì´ˆê¸°í™”ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤!!");
             return;
         }
         var weapon = WeaponProvider.Instance.NameToWeapon(weaponName);
 
         if (weapon == null)
         {
-            Debug.LogWarning("ÀÌ¸§¿¡ ¸Â´Â ¹«±â°¡ ¾ø½À´Ï´Ù!!");
+            Debug.LogWarning("ì´ë¦„ì— ë§ëŠ” ë¬´ê¸°ê°€ ì—†ìŠµë‹ˆë‹¤!!");
             return;
         }
         ReceiveWeapon(weapon);

@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-// ¹«±â ¹æÇâÅ×½ºÆ®¿Í ¿òÁ÷ÀÌ´Â ±â´ÉÀ» À§ÇØ ¸¸µç °£´Ü ÄÄÆ÷³ÍÆ®
-// ¿©±â¼­ ÇÏ³ª¸¸ º¸ÀÚ¸é ¹ì¼­¶óÀÌÅ©µéÀÇ °ø°İ ¹æ½ÄÀ» Âü°íÇØ¼­, ¿òÁ÷ÀÏ ¶© ±× ¹æÇâ´ë·Î °ø°İ ¹æÇâÀ» °®°í, ¸ØÃâ ¶© ¸¶Áö¸· °ø°İ ¹æÇâÀ» ÀúÀåÇÑ´Ù!
+// ë¬´ê¸° ë°©í–¥í…ŒìŠ¤íŠ¸ì™€ ì›€ì§ì´ëŠ” ê¸°ëŠ¥ì„ ìœ„í•´ ë§Œë“  ê°„ë‹¨ ì»´í¬ë„ŒíŠ¸
+// ì—¬ê¸°ì„œ í•˜ë‚˜ë§Œ ë³´ìë©´ ë±€ì„œë¼ì´í¬ë“¤ì˜ ê³µê²© ë°©ì‹ì„ ì°¸ê³ í•´ì„œ, ì›€ì§ì¼ ë• ê·¸ ë°©í–¥ëŒ€ë¡œ ê³µê²© ë°©í–¥ì„ ê°–ê³ , ë©ˆì¶œ ë• ë§ˆì§€ë§‰ ê³µê²© ë°©í–¥ì„ ì €ì¥í•œë‹¤!
 public class SimplePlayerMove : MonoBehaviour
 {
-    Vector3 lastMoveDir = Vector3.up;   // Ã·¿¡ ¾Æ¿¹ ¾È¿òÁ÷ÀÏ ¼öµµ ÀÖÀ¸´Ï±î ²À ÃÊ±âÈ­
+    Vector3 lastMoveDir = Vector3.up;   // ì²¨ì— ì•„ì˜ˆ ì•ˆì›€ì§ì¼ ìˆ˜ë„ ìˆìœ¼ë‹ˆê¹Œ ê¼­ ì´ˆê¸°í™”
 
     [SerializeField] float moveSpeed = 3f;
     [SerializeField] private float directionChangeDelay = 0.08f;
@@ -38,7 +38,7 @@ public class SimplePlayerMove : MonoBehaviour
             Mathf.Abs(normalized.x) <= 0.01f ||
             Mathf.Abs(normalized.y) <= 0.01f;
 
-        // ´ë°¢¼±¿¡¼­ ÇÑ Å°¸¸ ¸ÕÀú ¶³¾îÁø »óÈ²ÀÏ ¼ö ÀÖÀ¸¹Ç·Î Àá½Ã º¸·ù
+        // ëŒ€ê°ì„ ì—ì„œ í•œ í‚¤ë§Œ ë¨¼ì € ë–¨ì–´ì§„ ìƒí™©ì¼ ìˆ˜ ìˆìœ¼ë¯€ë¡œ ì ì‹œ ë³´ë¥˜
         if (previousWasDiagonal && currentIsCardinal)
         {
             if (pendingDirection != normalized)

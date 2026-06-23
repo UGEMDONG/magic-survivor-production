@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Á¤±ÔÈ­ ¹æÇâ º¤ÅÍ¿Í ÁÖº¯ Å¸°Ùµé, ±× Áß °¡Àå °¡±î¿î Å¸°Ù ÇÏ³ª Ã£±â °°ÀÌ
-// ÀÚÁÖ ¾²ÀÌ°í ¹ü¿ëÀûÀÎ ±â´ÉÀ» ¸ğ¾Æ³õÀº Á¤Àû Å¬·¡½º
+// ì •ê·œí™” ë°©í–¥ ë²¡í„°ì™€ ì£¼ë³€ íƒ€ê²Ÿë“¤, ê·¸ ì¤‘ ê°€ì¥ ê°€ê¹Œìš´ íƒ€ê²Ÿ í•˜ë‚˜ ì°¾ê¸° ê°™ì´
+// ìì£¼ ì“°ì´ê³  ë²”ìš©ì ì¸ ê¸°ëŠ¥ì„ ëª¨ì•„ë†“ì€ ì •ì  í´ë˜ìŠ¤
 public static class Utility
 {
     public static Vector3 GetNormalizedDir(Vector3 to, Vector3 from)
@@ -10,15 +10,15 @@ public static class Utility
 
     public static List<ITargetable> GetNearTargets(Vector2 position, float attackRadius, LayerMask targetLayers)
     {
-        // °¡»óÀÇ ¿ø ¹°¸® ÆÇÁ¤À¸·Î Äİ¶óÀÌ´õµé °¡Á®¿À±â
+        // ê°€ìƒì˜ ì› ë¬¼ë¦¬ íŒì •ìœ¼ë¡œ ì½œë¼ì´ë”ë“¤ ê°€ì ¸ì˜¤ê¸°
         var cols = Physics2D.OverlapCircleAll(position, attackRadius, targetLayers);
         if (cols == null || cols.Length == 0) return null;
-        // Äİ¶óÀÌ´õ¸¶´Ù IDamageableÀÌ ºÙ¾îÀÖÀ¸¸é ÀúÀå
+        // ì½œë¼ì´ë”ë§ˆë‹¤ IDamageableì´ ë¶™ì–´ìˆìœ¼ë©´ ì €ì¥
         List<ITargetable> targets = new();
         foreach (var col in cols)
             if (col.TryGetComponent<ITargetable>(out ITargetable target))
                 targets.Add(target);
-        // ÇÏ³ªµµ ¾øÀ¸¸é null ¸®ÅÏ
+        // í•˜ë‚˜ë„ ì—†ìœ¼ë©´ null ë¦¬í„´
         if (targets.Count == 0) return null;
         return targets;
     }
@@ -27,7 +27,7 @@ public static class Utility
         var targets = GetNearTargets(position, attackRadius, targetLayers);
         if (targets == null || targets.Count == 0) return null;
 
-        // ÀÏ¹İÀûÀÎ ÃÖ¼Ò/ÃÖ´ë Ã£±â ¾Ë°í¸®Áò
+        // ì¼ë°˜ì ì¸ ìµœì†Œ/ìµœëŒ€ ì°¾ê¸° ì•Œê³ ë¦¬ì¦˜
         int resultIndex = -1;
         int minDist = int.MaxValue;
 
