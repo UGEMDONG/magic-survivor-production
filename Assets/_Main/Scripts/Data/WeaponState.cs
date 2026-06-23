@@ -12,8 +12,11 @@ public class WeaponState
     // 아무리 WeaponState라고 해도 일단은 맘대로 값을 바꿀 수 없음. 안전하고 명시적이게 특정한 메서드를 사용하자!
     public float Damage { get; private set; }
     public float CoolTime { get; private set; }
-    public WeaponDirectionType DirectionType { get; private set; }
-    public LayerMask TargetLayers { get; private set; }
+
+    public WeaponAimType AimType { get; private set; }
+    public TargetSelectType TargetSelectType { get; private set; }
+    public SpawnPositionType SpawnPositionType { get; private set; }
+
     public float DetectRadius { get; private set; }
     public float EffectRadius { get; private set; }
 
@@ -23,8 +26,11 @@ public class WeaponState
     {
         Damage = baseData.Damage;
         CoolTime = baseData.CoolTime;
-        DirectionType = baseData.DirectionType;
-        TargetLayers = baseData.TargetLayers;
+
+        AimType = baseData.AimType;
+        TargetSelectType = baseData.TargetSelectType;
+        SpawnPositionType = baseData.SpawnPositionType;
+
         DetectRadius = baseData.DetectRadius;
         EffectRadius = baseData.EffectRadius;
     }

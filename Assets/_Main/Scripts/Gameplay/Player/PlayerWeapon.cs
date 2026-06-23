@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 public class PlayerWeapon : WeaponHandler, IWeaponOwner
 {
     SimplePlayerMove mover;
+    [SerializeField] LayerMask targetLayerMask;
+
+    public LayerMask TargetLayerMask => targetLayerMask;
     public Vector3 Position => transform.position;
     private SimplePlayerMove Mover { get
         {
@@ -31,8 +34,8 @@ public class PlayerWeapon : WeaponHandler, IWeaponOwner
 
         Initialize(this);
         
-        // AddWeapon("Flame");
-        // AddWeapon("Lightning");
+        //AddWeapon("Flame");
+        //AddWeapon("Lightning");
 
         AddWeapon("MagicBolt");
         AddWeapon("LavaZone");

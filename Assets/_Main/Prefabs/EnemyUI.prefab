@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -252,8 +252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 486e4eea89bc1344d8cfa3a48980b393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SmoothSlider
-  mySlider: {fileID: 1951939313319672665}
-  targetSlider: {fileID: 3393261871857210251}
+  mySlider: {fileID: 3393261871857210251}
+  targetSlider: {fileID: 1951939313319672665}
   lerp: 6
 --- !u!1 &2529168688163774655
 GameObject:
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 6360379553472665734}
   - component: {fileID: 6353072806868213326}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: EnemyUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -496,7 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a27697c56a68384697ea250ecf34ff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JohnNaSimpleHpBar
-  slider: {fileID: 3393261871857210251}
+  slider: {fileID: 1951939313319672665}
 --- !u!1 &6431276169448569235
 GameObject:
   m_ObjectHideFlags: 0

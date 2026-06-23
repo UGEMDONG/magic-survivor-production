@@ -32,7 +32,7 @@ public class MagicBolt : Weapon
     public override void Tick(float deltaTime)
     {
         // 찾는게 먼저, 그리고 공격
-        target = Utility.GetNearestTarget2D(transform.position, State.DetectRadius, State.TargetLayers);      
+        target = Utility.GetNearestTarget2D(transform.position, State.DetectRadius, owner.TargetLayerMask);      
         base.Tick(deltaTime);
     }
 }

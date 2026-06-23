@@ -33,12 +33,12 @@ public class Lightning : Weapon
     protected override bool TryAttack()
     {
         // 공격 범위에 있는 적들 하나 가져오기
-        var targetsInAttackRadius = Utility.GetNearTargets(transform.position, State.DetectRadius, State.TargetLayers);
+        var targetsInAttackRadius = Utility.GetNearTargets(transform.position, State.DetectRadius, owner.TargetLayerMask);
         if (targetsInAttackRadius == null || targetsInAttackRadius.Count == 0) return false;
 
         // 그 적들 중 아무나 하나의 위치 뽑아서 기준으로 공격 넓이에 포함되는 적들 가져오기
         Vector2 randomPos = targetsInAttackRadius[Random.Range(0, targetsInAttackRadius.Count)].transform.position;
-        var targetsInAttackArea = Utility.GetNearTargets(randomPos, State.DetectRadius, State.TargetLayers);
+        var targetsInAttackArea = Utility.GetNearTargets(randomPos, State.DetectRadius, owner.TargetLayerMask);
 
         foreach (IDamageable target in targetsInAttackArea)
             target.TakeDamage(State.Damage);

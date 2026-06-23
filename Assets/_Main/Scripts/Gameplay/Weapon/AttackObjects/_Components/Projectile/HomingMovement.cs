@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class HomingMovement : MonoBehaviour
 {
-    [SerializeField] Projectile projectile;
+    IProjectile projectile;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        
+        projectile = GetComponent<IProjectile>();
     }
 
     // Update is called once per frame

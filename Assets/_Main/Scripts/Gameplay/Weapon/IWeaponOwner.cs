@@ -12,5 +12,7 @@ public interface IWeaponOwner
     // 무기가 공격 기준과 방향을 잘 찾을 수 있게 하는 프로퍼티
     public Transform transform { get; }
     public Vector3 Position => transform.position;
+
+    public LayerMask TargetLayerMask { get; }
     public Vector3 MoveDirection { get; }
 }

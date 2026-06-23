@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Flame
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   weaponName: Flame
-  directionType: 1
-  targetLayers:
-    serializedVersion: 2
-    m_Bits: 64
+  aimType: 1
+  targetSelectType: 0
+  spawnPositionType: 0
   coolTime: 6
   damage: 8
-  attackRadius: 5
-  attackRange: 5
+  detectRadius: 0
+  effectRadius: 0
