@@ -5,6 +5,7 @@ MonoBehaviour
 {
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject skillSelectingPanel;
+    [SerializeField] private GameObject gameOverPanel;
 
     [SerializeField] private GameplayFlowController gameplayFlow;
 
@@ -36,19 +37,45 @@ MonoBehaviour
         {
             SelectSkill();
         }
+        else if (currentState == GameplayState.GameOver)
+        {
+            ShowGameOver();
+        }
+        else if (currentState == GameplayState.None)
+        {
+            HideAllPanels();
+        }
     }
 
     private void Pause()
     {
-        pausePanel.SetActive(true);
+        SetPanelActive(pausePanel, true);
     }
     private void Play()
     {
-        pausePanel.SetActive(false);
-        skillSelectingPanel.SetActive(false);
+        HideAllPanels();
     }
     private void SelectSkill()
     {
-        skillSelectingPanel.SetActive(true);
+        HideAllPanels();
+        SetPanelActive(skillSelectingPanel, true);
+    }
+
+    private void ShowGameOver()
+    {
+        HideAllPanels();
+        SetPanelActive(gameOverPanel, true);
+    }
+
+    private void HideAllPanels()
+    {
+        SetPanelActive(pausePanel, false);
+        SetPanelActive(skillSelectingPanel, false);
+        SetPanelActive(gameOverPanel, false);
+    }
+
+    private static void SetPanelActive(GameObject panel, bool isActive)
+    {
+        panel.SetActive(isActive);
     }
 }

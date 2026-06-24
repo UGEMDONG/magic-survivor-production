@@ -25,7 +25,7 @@ MonoBehaviour, IExpReceiver
 
     private bool CanLevelUp()
     {
-        if (currentExp >= maxExp && maxLevel < currentLevel)
+        if (currentExp >= maxExp && currentLevel < maxLevel)
         {
             return true;
         }

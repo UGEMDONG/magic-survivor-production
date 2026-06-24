@@ -6,6 +6,8 @@ using UnityEngine;
 // 한마디로 ==> 더 간단해지고 넓어진 개념이 되어따.
 public abstract class AttackObject : MonoBehaviour
 {
+    private int enemyLayer;
+
     protected IWeapon weapon;
 
     [SerializeField] protected Collider2D attackCollider;
@@ -20,6 +22,8 @@ public abstract class AttackObject : MonoBehaviour
 
     protected virtual void Awake()
     {
+        enemyLayer = LayerMask.NameToLayer("Enemy");
+
         if (attackCollider == null)
             attackCollider = GetComponent<Collider2D>();
     }
@@ -35,5 +39,18 @@ public abstract class AttackObject : MonoBehaviour
 
         if (lifeTime <= 0f)
             Destroy(gameObject);
+    }
+
+    protected bool TryGetEnemyDamageable(
+        Collider2D hitCollider,
+        out IDamageable damageable)
+    {
+        damageable = null;
+
+        if (hitCollider == null ||
+            hitCollider.gameObject.layer != enemyLayer)
+            return false;
+
+        return hitCollider.TryGetComponent(out damageable);
     }
 }

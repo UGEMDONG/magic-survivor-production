@@ -49,9 +49,7 @@ public class AttackZone : AttackObject, IAttackZone
         if (weapon == null)
             return;
 
-        IDamageable damageable = collision.GetComponent<IDamageable>();
-
-        if (damageable == null)
+        if (!TryGetEnemyDamageable(collision, out IDamageable damageable))
             return;
 
         if (!targets.Contains(damageable))

@@ -39,9 +39,7 @@ public class Projectile : AttackObject, IProjectile
         if (weapon == null)
             return;        
 
-        IDamageable damageable = hitCollider.GetComponent<IDamageable>();        
-
-        if (damageable == null)
+        if (!TryGetEnemyDamageable(hitCollider, out IDamageable damageable))
             return;
 
         if (target != null && hitOnlyTarget &&

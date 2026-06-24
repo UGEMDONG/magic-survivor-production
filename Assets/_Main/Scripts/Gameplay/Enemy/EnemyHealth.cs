@@ -7,6 +7,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable, ITargetable
     [SerializeField] bool isDie;
     [Space]
     [SerializeField] SimpleHpBar hpBar;
+    [Space]
+    [SerializeField, Min(0f)] float contactDamagePerSecond = 10f;
 
     public float HP => hp;
 
@@ -32,6 +34,29 @@ public class EnemyHealth : MonoBehaviour, IDamageable, ITargetable
         TakeDamage(-hpMax);
         isDie = false;
         gameObject.SetActive(true);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        ApplyContactDamage(collision.collider);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        ApplyContactDamage(other);
+    }
+
+    private void ApplyContactDamage(Collider2D other)
+    {
+        if (isDie || contactDamagePerSecond <= 0f)
+            return;
+
+        PlayerHealth playerHealth = other.GetComponentInParent<PlayerHealth>();
+
+        if (playerHealth == null || playerHealth.IsDie)
+            return;
+
+        playerHealth.TakeDamage(contactDamagePerSecond * Time.fixedDeltaTime);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

@@ -20,14 +20,29 @@ public class OrbGen : MonoBehaviour
 
     public void GenerateOrbs(Vector3 position, int level)
     {
-        ExpOrb orb = StaticGenericPool<ExpOrb>.GetPool(expOrbPrefab, position);
+        ExpOrb orb = StaticGenericPool<ExpOrb>.GetPool(expOrbPrefab, position, transform);
 
         orb.GenerateOrb(player, position, level);
     }
 
+    public void RegenerateOrbs()
+    {
+        currentCountDown = 0f;
+        StaticGenericPool<ExpOrb>.ClearPool();
+
+        ExpOrb[] existingOrbs = GetComponentsInChildren<ExpOrb>(true);
+        foreach (ExpOrb orb in existingOrbs)
+        {
+            orb.gameObject.SetActive(false);
+            Destroy(orb.gameObject);
+        }
+
+        StaticGenericPool<ExpOrb>.Preload(expOrbPrefab, pollLimit, transform);
+    }
+
     void Start()
     {
-        StaticGenericPool<ExpOrb>.Preload(expOrbPrefab, pollLimit);
+        RegenerateOrbs();
     }
 
     Vector3 RandomPosition()

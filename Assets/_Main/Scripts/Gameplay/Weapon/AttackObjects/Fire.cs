@@ -22,9 +22,10 @@ public class Fire : AttackObject
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IDamageable damageable = collision.GetComponent<IDamageable>();
+        if (weapon == null)
+            return;
 
-        if (damageable == null)
+        if (!TryGetEnemyDamageable(collision, out IDamageable damageable))
             return;
 
         damageable.TakeDamage(weapon.State.Damage);

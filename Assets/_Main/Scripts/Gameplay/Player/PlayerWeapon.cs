@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 public class PlayerWeapon : WeaponHandler, IWeaponOwner
 {
     SimplePlayerMove mover;
-    [SerializeField] LayerMask targetLayerMask;
+    private LayerMask enemyLayerMask;
 
-    public LayerMask TargetLayerMask => targetLayerMask;
+    public LayerMask TargetLayerMask => enemyLayerMask;
     public Vector3 Position => transform.position;
     private SimplePlayerMove Mover { get
         {
@@ -17,6 +17,11 @@ public class PlayerWeapon : WeaponHandler, IWeaponOwner
         } }
 
     public Vector3 MoveDirection => !Mover ? Vector3.zero : mover.LastMoveDir;
+
+    private void Awake()
+    {
+        enemyLayerMask = LayerMask.GetMask("Enemy");
+    }
 
     // 이거 어떻게 호출하는지 잘 모르겠다면 -> TestPlayer의 PlayerInput 컴포넌트 Player콜백 등록 쪽에 연결되어있어
     public void UpgradeWeapons_Test(InputAction.CallbackContext context)
