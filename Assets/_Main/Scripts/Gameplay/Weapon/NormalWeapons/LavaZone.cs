@@ -18,7 +18,20 @@ public class LavaZone : Weapon
         spawnPos = target != null ? target.transform.position : Random.insideUnitCircle * State.DetectRadius;
 
         lava.transform.position = spawnPos;
-        
+        float radius = State.EffectRadius * 2f;
+        lava.transform.localScale = new Vector3(radius, radius, 0.0f);
+
         return true;
+    }
+
+    protected override void OnLv2()
+    {
+        base.OnLv2();
+        State.StretchEffectRadius(0.2f);
+    }
+    protected override void OnLv3()
+    {
+        base.OnLv3();
+        State.StretchEffectRadius(0.3f);
     }
 }

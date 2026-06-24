@@ -7,7 +7,7 @@ public abstract class WeaponHandler : MonoBehaviour, IWeaponReceiver
 {
     IWeaponOwner owner;
     // [SerializeField] WeaponProvider provider;
-    List<IWeapon> weaponList = new();
+    protected List<IWeapon> weaponList = new();
     private bool initialized;
 
     public IReadOnlyList<IWeapon> GetWeaponList => weaponList;
@@ -21,7 +21,7 @@ public abstract class WeaponHandler : MonoBehaviour, IWeaponReceiver
 
     // 저번엔 ReceiveWeapon를 딱히 활용 안했었는데 리스트에 추가하는 최종 메서드 용도가 좋을듯
     public void ReceiveWeapon(IWeapon weapon)
-    {
+    {       
         weapon.Initialize(owner);
         weaponList.Add(weapon);
     }
@@ -31,7 +31,15 @@ public abstract class WeaponHandler : MonoBehaviour, IWeaponReceiver
         {
             Debug.LogWarning("WeaponHandler가 초기화되지 않았습니다!!");
             return;
-        }
+        }        
+
+        foreach (var has in weaponList)
+            if (has.WeaponName.Equals(weaponName))
+            {
+                Debug.LogWarning("이미 플레이어는 무기: " + weaponName + "가 있습니다!!");
+                return;
+            }
+
         var weapon = WeaponProvider.Instance.NameToWeapon(weaponName);
 
         if (weapon == null)
@@ -39,6 +47,7 @@ public abstract class WeaponHandler : MonoBehaviour, IWeaponReceiver
             Debug.LogWarning("이름에 맞는 무기가 없습니다!!");
             return;
         }
+
         ReceiveWeapon(weapon);
     }
 

@@ -13,6 +13,10 @@ public class HomingMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(projectile.Target == null || 
+            !projectile.Target.gameObject.activeSelf) 
+            return;
+
         Transform targetTr = projectile.Target.transform;
         Vector3 dir = Utility.GetNormalizedDir(targetTr.position, transform.position);
         transform.position += dir * Time.deltaTime * projectile.Speed;

@@ -10,6 +10,7 @@ public class WeaponProvider : MonoBehaviour, IWeaponProvider
     [SerializeField] private List<GameObject> allWeaponsObject = new List<GameObject>();
     private List<IWeapon> allWeapons = new List<IWeapon>();
 
+    public List<GameObject> AllWeaponObjs => allWeaponsObject;
     public static WeaponProvider Instance => instance;
 
     public IReadOnlyList<IWeapon> GetWeaponList => allWeapons;
@@ -20,7 +21,7 @@ public class WeaponProvider : MonoBehaviour, IWeaponProvider
             if (weapon.WeaponName == weaponName)
             {
                 Debug.Log($"return {weaponName}");
-                return weapon;
+                return Instantiate(weapon.gameObject).GetComponent<IWeapon>();
             }
         }
         Debug.Log($"null {weaponName}");
@@ -34,7 +35,6 @@ public class WeaponProvider : MonoBehaviour, IWeaponProvider
 
         foreach (GameObject weaponObject in allWeaponsObject)
         {   
-            // 씬에 게임오브젝트로 인스턴스 안하면 프리펩 훼손됨 클나!!
             var weapon = Instantiate(weaponObject, transform);
             allWeapons.Add(weapon.GetComponent<IWeapon>());
         }

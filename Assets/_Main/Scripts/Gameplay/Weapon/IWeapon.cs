@@ -12,4 +12,7 @@ public interface IWeapon
     public void Initialize(IWeaponOwner owner);
     public void Tick(float deltaTime);
     public void Upgrade();
+
+    public void Destroy();  // 무기 없에는 테스트용
+    public GameObject gameObject { get; }
 }

@@ -5,11 +5,11 @@ using UnityEngine;
 // 엔진에서의 직관적인 흐름에서 파악하기 어렵거나 비효율적이고, 지금 게임 개발 진도와 게임 규모에서
 // 필요한지에 대한 의문이 있기 때문에 계속 고민중이다.
 // + 그냥 IProjectile보다 투사체 정보를 가졌다 라는 뜻의 IProjectileContext?도 나쁘지 않은듯
-public interface IProjectile
+public interface IProjectile : IDetectable
 {
     public float Speed { get; }
     public Vector3 Direction { get; }
-    public ITargetable Target { get; }
+    // public ITargetable Target { get; }
 
     public void Initialize(IWeapon owner, float speed, Vector3 direction, ITargetable target = null);
 }

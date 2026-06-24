@@ -17,7 +17,16 @@ public abstract class Weapon : MonoBehaviour, IWeapon
 
     // GetFixedDir랑 GetTargetDir는 abstract도 좋다고 생각하는데, 안 쓸 무기 클래스에서 구현부를 꼭 해야하는게 귀찮아서 대충이라도 넣어봄.
     protected virtual Vector2 GetFixedDir() => Vector2.up;
-    protected virtual Vector2 GetTargetDir() => Vector2.zero;
+    protected virtual Vector2 GetTargetDir()
+    {
+        ITargetable target = Utility.GetNearestTarget2D(
+            transform.position,
+            State.DetectRadius,
+            owner.TargetLayerMask);
+
+        if(target == null) return Vector2.zero;
+        return Utility.GetNormalizedDir(target.transform.position, transform.position);
+    }
 
     protected virtual Vector2 GetAimDir()
     {
@@ -31,6 +40,9 @@ public abstract class Weapon : MonoBehaviour, IWeapon
 
             WeaponAimType.FixedDirection =>
                GetFixedDir(),
+
+            WeaponAimType.RandomDirection =>
+               Random.insideUnitCircle,
 
             _ => Vector2.zero
         };
@@ -74,5 +86,10 @@ public abstract class Weapon : MonoBehaviour, IWeapon
             case 2: OnLv2(); break;
             case 3: OnLv3(); break;
         }
-    }    
+    }
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
+    }
 }

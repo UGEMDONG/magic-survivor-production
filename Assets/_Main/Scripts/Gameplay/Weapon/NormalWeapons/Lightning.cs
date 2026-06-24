@@ -15,8 +15,9 @@ public class Lightning : Weapon
         // 곱하기 2 해주는 이유: 유니티 기본 원은 스케일 1일 때 반지름 0.5, 그래서 우리 피해가 반지름 2이면 스케일(지름)을 4로 설정해주자
         fx.localScale = State.EffectRadius * Vector3.one * 2f;
 
+        // 무기 테스트에서 갑자기 무기를 없에는 상황이 생기다 보니, 코루틴이 끊겨서 번개 이팩트가 남아있는 상황이 생김. => 번개 이팩트 오브젝트에 컴포넌트 추가.
         yield return new WaitForSeconds(0.5f);
-        Destroy(fx.gameObject);
+        // Destroy(fx.gameObject);
     }
 
     protected override void OnLv2()

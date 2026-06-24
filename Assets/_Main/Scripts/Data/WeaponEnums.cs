@@ -3,7 +3,8 @@ public enum WeaponAimType
     None,
     MoveDirection,
     TargetDirection,
-    FixedDirection
+    FixedDirection,
+    RandomDirection
 }
 
 public enum TargetSelectType

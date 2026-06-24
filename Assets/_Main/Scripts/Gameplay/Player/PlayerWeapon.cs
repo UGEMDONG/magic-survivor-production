@@ -21,11 +21,21 @@ public class PlayerWeapon : WeaponHandler, IWeaponOwner
     // 이거 어떻게 호출하는지 잘 모르겠다면 -> TestPlayer의 PlayerInput 컴포넌트 Player콜백 등록 쪽에 연결되어있어
     public void UpgradeWeapons_Test(InputAction.CallbackContext context)
     {
-        if (!context.started) return;
-
+        /*if (!context.started) return;
+        UpgradeWeaponsAll();*/
+    }
+    public void UpgradeWeaponsAll()
+    {
         Debug.Log("전체 무기 강화!");
         foreach (IWeapon weapon in GetWeaponList)
             weapon.Upgrade();
+    }
+    public void DeleteWeaponsAll()
+    {
+        Debug.Log("무기 전체 삭제!");
+        foreach (IWeapon weapon in GetWeaponList)
+            weapon.Destroy();
+        weaponList.Clear();
     }
 
     protected override void Start()
@@ -33,12 +43,15 @@ public class PlayerWeapon : WeaponHandler, IWeaponOwner
         base.Start();
 
         Initialize(this);
-        
+
+        /*AddWeapon("MagicBolt");
+        AddWeapon("MagicArrow");
+        // AddWeapon("Fireball");
+
         //AddWeapon("Flame");
         //AddWeapon("Lightning");
 
-        AddWeapon("MagicBolt");
-        AddWeapon("LavaZone");
+        AddWeapon("LavaZone");*/
     }
     protected override void Update()
     {
