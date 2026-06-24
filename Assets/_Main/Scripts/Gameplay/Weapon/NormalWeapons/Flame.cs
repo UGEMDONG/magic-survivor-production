@@ -11,7 +11,7 @@ public class Flame : Weapon
     {
         Fire fire = Instantiate(firePrefab, transform);
         fire.Initialize(this);
-        fire.SetDirection(GetAttackDir());
+        fire.SetDirection(GetAimDir());
     }
     IEnumerator Coroutine_Flame()
     {

@@ -20,6 +20,15 @@ public class Fire : AttackObject
         transform.up = direction;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        IDamageable damageable = collision.GetComponent<IDamageable>();
+
+        if (damageable == null)
+            return;
+
+        damageable.TakeDamage(weapon.State.Damage);
+    }
     /*protected override void Start()
     {
         base.Start();

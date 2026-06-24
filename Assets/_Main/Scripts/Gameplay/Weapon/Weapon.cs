@@ -19,21 +19,21 @@ public abstract class Weapon : MonoBehaviour, IWeapon
     protected virtual Vector2 GetFixedDir() => Vector2.up;
     protected virtual Vector2 GetTargetDir() => Vector2.zero;
 
-    // 프로토타입에산 계륵이었던 함수에서 지금은 바꿀 일이 거의 없어진 방식 ((Owner가 있기에 MoveDir을 쉽게 가져올 수 있음.
-    protected virtual Vector2 GetAttackDir()
+    protected virtual Vector2 GetAimDir()
     {
-        switch (State.DirectionType)
+        return state.AimType switch
         {
-            case WeaponDirectionType.None:
-                return Vector2.zero;
-            case WeaponDirectionType.MoveDirection:
-                return owner.MoveDirection;
-            case WeaponDirectionType.FixedDirection:
-                return GetFixedDir();
-            case WeaponDirectionType.TargetDirection:
-                return GetTargetDir();
-        }
-        return Vector2.zero;
+            WeaponAimType.MoveDirection =>
+                owner.MoveDirection.normalized,
+
+            WeaponAimType.TargetDirection  =>
+                GetTargetDir(),
+
+            WeaponAimType.FixedDirection =>
+               GetFixedDir(),
+
+            _ => Vector2.zero
+        };
     }
 
     // 아까 오너가 Transform을 반환하기 때문에 인자값이 클래스가 아니여도 자식으로 쉽게 들어갈 수 있음.

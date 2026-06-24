@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: Lightning
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   weaponName: Lightning
-  directionType: 0
-  targetLayers:
-    serializedVersion: 2
-    m_Bits: 64
+  aimType: 0
+  targetSelectType: 0
+  spawnPositionType: 2
   coolTime: 4
   damage: 15
   detectRadius: 10

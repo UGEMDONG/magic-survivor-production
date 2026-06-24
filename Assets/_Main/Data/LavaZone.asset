@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: LavaZone
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   weaponName: LavaZone
-  directionType: 0
-  targetLayers:
-    serializedVersion: 2
-    m_Bits: 64
+  aimType: 0
+  targetSelectType: 0
+  spawnPositionType: 2
   coolTime: 4
-  damage: 2
-  detectRadius: 3
+  damage: 8
+  detectRadius: 6
   effectRadius: 1.5

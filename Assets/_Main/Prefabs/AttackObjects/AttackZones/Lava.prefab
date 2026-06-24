@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1438180214547621685}
   - component: {fileID: 8189427250243878300}
+  - component: {fileID: 3988926435349596790}
   - component: {fileID: 7851992390486675806}
   - component: {fileID: 8818132832299598746}
   - component: {fileID: 8701671071688665179}
@@ -49,7 +50,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AttackZone
   attackCollider: {fileID: 8818132832299598746}
   lifeTime: 5
-  tickInterval: 0.5
+--- !u!114 &3988926435349596790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3299697849112393897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63831726dc6c5424485c573f44c25ee2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TickDamage
 --- !u!212 &7851992390486675806
 SpriteRenderer:
   serializedVersion: 2

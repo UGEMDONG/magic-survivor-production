@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: MagicBolt
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   weaponName: MagicBolt
-  directionType: 2
-  targetLayers:
-    serializedVersion: 2
-    m_Bits: 64
+  aimType: 2
+  targetSelectType: 1
+  spawnPositionType: 0
   coolTime: 2
   damage: 12
   detectRadius: 5

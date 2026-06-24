@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class StraightMovement : MonoBehaviour
 {
-    [SerializeField] Projectile projectile;
+    IProjectile projectile;
+
+    private void Awake()
+    {
+        projectile = GetComponent<IProjectile>();
+    }
 
     // Update is called once per frame
     void Update()
