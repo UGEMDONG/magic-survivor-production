@@ -12,6 +12,8 @@ public abstract class Weapon : MonoBehaviour, IWeapon
 
     public WeaponData BaseData => baseData;
     public WeaponState State => state;
+    public int Level => level;
+    public int MaxLevel => 3;
 
     protected abstract bool TryAttack();
 
@@ -63,7 +65,7 @@ public abstract class Weapon : MonoBehaviour, IWeapon
     protected virtual void OnLv3() { State.ReduceCoolTime(State.CoolTime / 2f); }// 쿨타임 2배 단축!!
     public virtual void Upgrade()
     {
-        if (level >= 3)
+        if (level >= MaxLevel)
         {
             Debug.Log("무기 " + BaseData.WeaponName + " 이 이미 최대레벨입니다!");
             return;

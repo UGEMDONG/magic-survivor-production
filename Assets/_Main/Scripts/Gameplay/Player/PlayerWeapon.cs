@@ -39,7 +39,7 @@ public class PlayerWeapon : WeaponHandler, IWeaponOwner
 
         Initialize(this);
         
-        AddWeapon("Flame");
+        // AddWeapon("Flame");
         // AddWeapon("Lightning");
 
         AddWeapon("MagicBolt");

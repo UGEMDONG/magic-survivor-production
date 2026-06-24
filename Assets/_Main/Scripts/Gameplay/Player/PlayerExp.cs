@@ -9,6 +9,10 @@ MonoBehaviour, IExpReceiver
     private int currentExp = 0;
     private int currentLevel = 0;
 
+    public int CurrentExp => currentExp;
+    public int MaxExp => maxExp;
+    public int CurrentLevel => currentLevel;
+
     public event Action<int> ExpChanged;
     public event Action<int> LevelChanged;
 

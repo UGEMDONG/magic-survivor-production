@@ -4,6 +4,8 @@ public interface IWeapon
 {
     public WeaponData BaseData { get; }
     public WeaponState State { get; }
+    public int Level { get; }
+    public int MaxLevel { get; }
 
     // 원래는 Data.weaponName(baseData)을 반환했는데, 이제는 runtimeData가 생기면서 무기가 알아서 반환하도록 하기.
     public string WeaponName => BaseData.WeaponName;
