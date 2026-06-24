@@ -34,11 +34,11 @@ public class PlayerWeapon : WeaponHandler, IWeaponOwner
 
         Initialize(this);
         
-        //AddWeapon("Flame");
-        //AddWeapon("Lightning");
+        AddWeapon("Flame");
+        // AddWeapon("Lightning");
 
         AddWeapon("MagicBolt");
-        AddWeapon("LavaZone");
+        // AddWeapon("LavaZone");
     }
     protected override void Update()
     {

@@ -10,7 +10,8 @@ public class ExpOrb : MonoBehaviour
     [SerializeField] private Color[] colors = { Color.blue, Color.yellow, Color.magenta };
     public int[] expAmount = { 10, 20, 30 }; 
     public int orbLevel = 1; // 1: Small, 2: Medium, 3: Large
-    private Player player;
+    private Transform target;
+    private IExpReceiver expReceiver;
     private SpriteRenderer sr;
 
     void MoveToTarget(Transform target)
@@ -18,9 +19,11 @@ public class ExpOrb : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
     }
 
-    public void GenerateOrb(Player player, Vector3 position, int level)
+    public void GenerateOrb(GameObject player, Vector3 position, int level)
     {
-        this.player = player;
+        target = player.transform;
+        expReceiver = player.GetComponent<IExpReceiver>();
+
         orbLevel = level;
         transform.position = position;
         gameObject.SetActive(true);
@@ -35,14 +38,14 @@ public class ExpOrb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if (Vector2.Distance(transform.position, player.transform.position) < attractionRange)
+        if (Vector2.Distance(transform.position, target.position) < attractionRange)
         {
-            MoveToTarget(player.transform);
-            if (Vector3.Distance(transform.position, player.transform.position) < 0.5f)
+            MoveToTarget(target);
+            if (Vector3.Distance(transform.position, target.position) < 0.5f)
             {
-                Debug.Log("Player collected an EXP orb!");
+                // Debug.Log("Player collected an EXP orb!");
                 StaticGenericPool<ExpOrb>.ReturnPool(this);
-                player.GiveExp(expAmount[orbLevel - 1]);
+                expReceiver.TakeExp(expAmount[orbLevel - 1]);
             }
         }
     }

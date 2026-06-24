@@ -3,7 +3,7 @@ using UnityEngine;
 public class OrbGen : MonoBehaviour
 {
 
-    [SerializeField] private Player player;
+    [SerializeField] private GameObject player;
     [SerializeField] private ExpOrb expOrbPrefab;
     [SerializeField] private int pollLimit = 200;
     private float currentCountDown = 0f;
